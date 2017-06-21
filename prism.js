@@ -487,19 +487,6 @@ var script = document.currentScript || [].slice.call(document.getElementsByTagNa
 
 if (script) {
 	_.filename = script.src;
-
-	if (document.addEventListener && !script.hasAttribute('data-manual')) {
-		if(document.readyState !== "loading") {
-			if (window.requestAnimationFrame) {
-				window.requestAnimationFrame(_.highlightAll);
-			} else {
-				window.setTimeout(_.highlightAll, 16);
-			}
-		}
-		else {
-			document.addEventListener('DOMContentLoaded', _.highlightAll);
-		}
-	}
 }
 
 return _self.Prism;
@@ -604,7 +591,7 @@ if (Prism.languages.markup) {
 			alias: 'language-css'
 		}
 	});
-	
+
 	Prism.languages.insertBefore('inside', 'attr-value', {
 		'style-attr': {
 			pattern: /\s*style=("|').*?\1/i,
